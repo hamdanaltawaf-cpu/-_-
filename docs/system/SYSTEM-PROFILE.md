@@ -800,3 +800,18 @@ $result = $searcher.Search("IsInstalled=0 and IsHidden=0")
 ### جرد Google Chrome — المستوى الأول — 2026-11-09
 - المسار `%LOCALAPPDATA%\\Google\\Chrome` يحتوي مجلداً مباشراً واحداً هو `User Data` بحجم 2847.19 MB (نحو 2.78 GiB).
 - لم تُفحص مكونات `User Data` بعد؛ قد تشمل ملفات ملفات تعريف المستخدم وبيانات التصفح والإضافات والكاش. لا حذف ولا تنظيف قبل التفصيل.
+
+
+### جرد بيانات Chrome — تفصيل User Data — 2026-11-09
+- `Profile 3`: 1910.8 MB (الأكبر).
+- `Profile 5`: 518.1 MB.
+- `Guest Profile`: 90.7 MB.
+- `optimization_guide_model_store`: 72.5 MB.
+- `extensions_crx_cache`: 46.7 MB.
+- `System Profile`: 41.8 MB.
+- `component_crx_cache`: 38.2 MB.
+- `SwReporter`: 25.5 MB.
+- `WasmTtsEngine`: 22.3 MB.
+- `Safe Browsing`: 18.9 MB.
+- بقية المجلدات أصغر، وأغلبها مكونات متصفح/حماية/نماذج وكاش.
+- لم يُفحص محتوى `Profile 3` أو `Profile 5` من الداخل بعد. لا يمكن اعتبار حجمهما مساحة قابلة للتنظيف؛ قد يحتويان بيانات ملفات تعريف Chrome الشخصية مثل قواعد البيانات والإضافات والتفضيلات.
