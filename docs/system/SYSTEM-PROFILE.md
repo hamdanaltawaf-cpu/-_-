@@ -846,3 +846,9 @@ $result = $searcher.Search("IsInstalled=0 and IsHidden=0")
 - Sessions_Encrypted: 0.9 MB
 
 **قراءة أولية:** Profile 3 يتركز استهلاكه في Service Worker وCache وبيانات تخزين المواقع والإضافات؛ Profile 5 يتركز في Code Cache وCache. هذه أسماء مجلدات تقنية ولا تكفي وحدها لتحديد ما يمكن حذفه بأمان، خصوصاً Service Worker وIndexedDB وWebStorage وExtensions. لا حذف حتى تحديد المكونات والمواقع المالكة لهذه البيانات.
+
+
+### تفصيل Service Worker في Chrome — 2026-11-09
+- Profile 3: `CacheStorage` 895 MB، `Database` 0.2 MB، `ScriptCache` 24.3 MB.
+- Profile 5: `CacheStorage` 45.1 MB، `Database` 0.1 MB، `ScriptCache` 4.5 MB.
+- الاستنتاج: معظم استهلاك Service Worker في Profile 3 مصدره CacheStorage. قد تكون مخازن مؤقتة مرتبطة بمواقع وتطبيقات ويب؛ لا نحذفها قبل معرفة المجلدات/الأصول التي تملكها.
