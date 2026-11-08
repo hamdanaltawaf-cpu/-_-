@@ -815,3 +815,34 @@ $result = $searcher.Search("IsInstalled=0 and IsHidden=0")
 - `Safe Browsing`: 18.9 MB.
 - بقية المجلدات أصغر، وأغلبها مكونات متصفح/حماية/نماذج وكاش.
 - لم يُفحص محتوى `Profile 3` أو `Profile 5` من الداخل بعد. لا يمكن اعتبار حجمهما مساحة قابلة للتنظيف؛ قد يحتويان بيانات ملفات تعريف Chrome الشخصية مثل قواعد البيانات والإضافات والتفضيلات.
+
+
+### جرد Chrome Profiles — المستوى الثاني — 2026-11-09
+#### Profile 3 (1910.8 MB إجمالاً)
+- Service Worker: 919.5 MB
+- Cache: 273.7 MB
+- Extensions: 230.8 MB
+- IndexedDB: 134.7 MB
+- WebStorage: 120.7 MB
+- Code Cache: 41 MB
+- optimization_guide_prediction_model_downloads: 40.9 MB
+- Storage: 37.2 MB
+- Local Extension Settings: 22.6 MB
+- File System: 7.5 MB
+- Local Storage: 6.1 MB
+- Web Applications: 2.8 MB
+#### Profile 5 (518.1 MB إجمالاً)
+- Code Cache: 195.4 MB
+- Cache: 173.6 MB
+- Service Worker: 49.7 MB
+- Extensions: 30.9 MB
+- IndexedDB: 6.8 MB
+- DawnWebGPUCache: 5.6 MB
+- GPUCache: 5.6 MB
+- Local Extension Settings: 3.8 MB
+- Storage: 1.9 MB
+- Web Applications: 1.5 MB
+- Sessions: 1.4 MB
+- Sessions_Encrypted: 0.9 MB
+
+**قراءة أولية:** Profile 3 يتركز استهلاكه في Service Worker وCache وبيانات تخزين المواقع والإضافات؛ Profile 5 يتركز في Code Cache وCache. هذه أسماء مجلدات تقنية ولا تكفي وحدها لتحديد ما يمكن حذفه بأمان، خصوصاً Service Worker وIndexedDB وWebStorage وExtensions. لا حذف حتى تحديد المكونات والمواقع المالكة لهذه البيانات.
