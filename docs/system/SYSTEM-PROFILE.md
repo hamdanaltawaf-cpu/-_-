@@ -672,3 +672,33 @@ $result = $searcher.Search("IsInstalled=0 and IsHidden=0")
 **الاستنتاج:** Docker Desktop غير مشغّل وقت الفحص؛ الخدمة مضبوطة على Manual ومتوقفة، ولا توجد عمليات Docker ولا قناة اتصال بمحرك Linux. هذه النتائج متسقة مع إغلاق Docker Desktop، ولا تكفي وحدها لإثبات خلل أو تلف. لم يتم تشغيل الخدمة أو التطبيق أو تغيير نوع بدء التشغيل، ولم يتم تعديل بيانات Docker.
 
 **قرار الخطوة التالية:** لا نشغّل Docker تلقائياً. يمكن مواصلة جرد المساحة والبرامج دون تشغيله، أو تشغيل Docker Desktop بموافقة المستخدم إذا كان يريد فحص استخدام الصور والحاويات وVolumes عبر `docker system df -v`.
+
+
+## تفصيل مجلدات AppData\Local الإضافية — 2026-11-09
+
+أرسل المستخدم نتائج جرد قراءة فقط للمجلدات التالية:
+
+| المسار النسبي داخل `%LOCALAPPDATA%` | أكبر العناصر المرصودة | الحجم |
+|---|---|---:|
+| `Microsoft` | `OneDrive` | 1.935 GB |
+| `Microsoft` | `Edge` | 0.753 GB |
+| `Microsoft` | `Office` | 0.224 GB |
+| `Google` | `Chrome` | 2.778 GB |
+| `npm-cache` | `_cacache` | 1.395 GB |
+| `npm-cache` | `_npx` | 0.042 GB |
+| `Programs` | `Microsoft VS Code` | 1.008 GB |
+| `Programs` | `Python` | 0.177 GB |
+| `Packages` | `Microsoft.MicrosoftOfficeHub` | 0.385 GB |
+| `Packages` | `Microsoft.BingWallpaper` | 0.166 GB |
+| `Packages` | `Microsoft.Windows.Search` | 0.139 GB |
+| `Packages` | `Microsoft.ZuneMusic` | 0.106 GB |
+| `Packages` | `5319275A.51895FA4EA97F` | 0.101 GB |
+| `Packages` | `12030rocksdanister.LivelyWallpaper` | 0.068 GB |
+| `Adobe` | `ARM` | 1.002 GB |
+| `Adobe` | `Acrobat` | 0.012 GB |
+| `OpenAI` | `Codex` | 0.685 GB |
+| `nvm` | `v24.16.0` | 0.585 GB |
+
+**ملاحظات تفسيرية:** هذه قياسات مجلدات وليست دليلاً على أن محتوياتها قابلة للحذف. لا يمكن تحديد وظيفة/سلامة كل ملف داخلي من اسم المجلد أو حجمه وحده. `npm-cache\_cacache` يبدو مخزن npm المؤقت بحسب اسمه وموقعه، لكن لا يُنظّف قبل فهم احتياجات بيئة التطوير. `Adobe\ARM` لم يُحسم محتواه أو سبب حجمه. مجلدات `OneDrive` و`Chrome` و`VS Code` و`Codex` و`nvm` قد تحتوي بيانات مستخدم أو بيئات عمل، ولا تُحذف يدوياً.
+
+**الخطوة التالية المقترحة:** فحص محتويات `Adobe\ARM` و`npm-cache\_cacache` على مستوى العناصر المباشرة وأكبر الملفات، للقراءة فقط، قبل تقرير أي إجراء. لا تغيير إعدادات أو حذف.
