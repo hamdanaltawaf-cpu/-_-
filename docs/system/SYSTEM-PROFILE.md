@@ -563,3 +563,40 @@ $result = $searcher.Search("IsInstalled=0 and IsHidden=0")
 - تسجيل `Local` بحجم 23.01 GB، و`Roaming` بحجم 2.45 GB، و`LocalLow` بحجم 0.01 GB.
 - تحديد `AppData\\Local` كأولوية الفحص التالية؛ يمثل نحو 90.3% من حجم AppData المرصود.
 - لم يتم إجراء أي حذف أو نقل أو تغيير على الجهاز.
+
+
+## تفصيل AppData\\Local — المستوى الخامس
+
+أرسل المستخدم نتيجة قياس أحجام المجلدات المباشرة داخل `%LOCALAPPDATA%` (أي `AppData\\Local`) بتاريخ 2026-11-08 23:00:47 UTC. أبرز النتائج:
+
+| المجلد | الحجم |
+|---|---:|
+| `Docker` | 9.61 GB |
+| `Microsoft` | 3.17 GB |
+| `Google` | 2.78 GB |
+| `npm-cache` | 1.44 GB |
+| `Programs` | 1.21 GB |
+| `Packages` | 1.16 GB |
+| `Adobe` | 1.01 GB |
+| `Mozilla` | 0.70 GB |
+| `OpenAI` | 0.69 GB |
+| `nvm` | 0.60 GB |
+| `Icaros` | 0.23 GB |
+| `Opera Software` | 0.16 GB |
+| `CrashDumps` | 0.07 GB |
+| `Temp` | 0.05 GB |
+| `next-swc` | 0.04 GB |
+| `Comms` | 0.03 GB |
+| `Package Cache` | 0.03 GB |
+
+ظهرت مجلدات أخرى بقيم 0.02 GB أو أقل أو 0.00 GB بالتقريب، منها `Codex` و`Cloudflare` و`copilot` و`claude-cli-nodejs` و`GIMP` وغيرها.
+
+**الاستنتاج:** `Docker` هو أكبر مجلد مباشر داخل `AppData\\Local` بحجم 9.61 GB، ويليه `Microsoft` (3.17 GB) و`Google` (2.78 GB) و`npm-cache` (1.44 GB). لا تكشف أسماء المجلدات وأحجامها وحدها طبيعة البيانات أو إمكانية حذفها. حجم `Docker` المحلي لا يساوي بالضرورة حجم صور/حاويات Docker القابلة للحذف، وقد يتضمن بيانات تشغيل وقرصًا افتراضيًا وملفات مهمة.
+
+**الخطوة التالية:** تفصيل `AppData\\Local\\Docker` إلى المجلدات والملفات المباشرة وقياسها بقراءة فقط، ثم تحديد موضع بيانات Docker الفعلي. لا تستخدم `docker system prune` ولا تحذف ملفات أو مجلدات Docker أو توقفه قبل فحص البيانات والحصول على موافقة صريحة.
+
+### 2026-11-09 — تحديث تحليل AppData\\Local
+- تسجيل أحجام أكبر المجلدات المباشرة داخل Local، وفي مقدمتها Docker (9.61 GB).
+- تسجيل Microsoft (3.17 GB)، Google (2.78 GB)، npm-cache (1.44 GB)، Programs (1.21 GB)، Packages (1.16 GB)، Adobe (1.01 GB)، Mozilla (0.70 GB)، OpenAI (0.69 GB)، وnvm (0.60 GB).
+- تحديد Docker كأولوية الفحص التالية، دون افتراض أن بياناته قابلة للحذف.
+- **لم تُجرَ أي تغييرات على الجهاز أو بيانات Docker.**
