@@ -105,3 +105,16 @@
 - تمت قراءة ملفات المستودع الثلاثة كاملة من `main`. شجرة المستودع تتضمن وثائق Markdown فقط، دون سكربتات أو ملفات إعداد قابلة للتنفيذ.
 - أولوية المساحة التاريخية من الجرد: Docker VHDX 9.505 GB؛ Chrome User Data 2.78 GiB؛ npm-cache 1.395 GB؛ Adobe ARM نحو 1.002 GB. كل هذه قياسات قديمة من 2026-11-09 وتحتاج إعادة فحص قبل أي إجراء. Docker كان مغلقاً، ومحركه غير متاح وقت الفحص.
 - ملف `SYSTEM-PROFILE.md` هو المرجع التفصيلي الأساسي؛ `HANDOFF-2026-11-20.md` أحدث من هذا الملف وكان متضمناً فحص إزالة المتصفحات قبل نجاح Brave. استخدم التحديثات اللاحقة في الملفات الثلاثة عند وجود تعارض مع النص التاريخي القديم.
+
+
+## أحدث تحديث — Windows Update وNoVirusThanks (2026-11-20)
+
+هذا القسم يتقدم على الملاحظات القديمة داخل الملف التي تفيد بأن اكتمال تثبيت التحديثات لم يتأكد:
+
+- المستخدم أفاد الآن بأن تحديثات Windows اكتملت. يُسجل ذلك كإفادة المستخدم؛ لم يصل ناتج Get-HotFix منفصل.
+- الخدمات حسب آخر مخرجات PowerShell: BITS Running/Automatic؛ CryptSvc Running/Automatic؛ wuauserv Running/Manual؛ WinUpdStopSvc Running/Automatic.
+- WinUpdStopSvc يعمل تلقائياً من: `C:\Program Files\NoVirusThanks\Win Update Stop\WinUpdStopSvc.exe`.
+- Authenticode Status = Valid، Signer = NoVirusThanks Company Srl (support@novirusthanks.org).
+- وفق FAQ الرسمي، يبقي البرنامج خدمته لتعيد تعطيل Windows Updates تلقائياً إذا أعاد Windows تفعيلها بعد reboot أو مرور الوقت؛ ويمكن إعادة التفعيل من واجهة البرنامج باختيار Enable: https://www.winupdatestop.com/faqs/
+- واجهة البرنامج لم تُفحص بعد، لذلك لا نعرف هل حالته الحالية Enabled أم Disabled.
+- لا توجد تغييرات على الجهاز. الخطوة التالية قراءة الحالة من واجهة البرنامج فقط دون الضغط على Enable/Disable. أي تغيير أو إزالة يحتاج موافقة المستخدم.
