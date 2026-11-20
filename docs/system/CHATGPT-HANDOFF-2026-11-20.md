@@ -84,3 +84,11 @@
 - `docs/system/SYSTEM-PROFILE.md` أُضيف إليه قسم مراجعة المتصفحات واعتماد Brave بتاريخ 2026-11-20.
 - Commit: `a6486a455e1d0a558a4e6aef044e2b109281ced5`.
 - هذا الملف نفسه هو handoff الجديد، ويُنشأ على `main`.
+
+
+## متابعة المحادثة الجديدة — 2026-11-20
+- المستخدم أرسل نص أمر التحقق من إزالة Firefox، لكن لم يتضمن ناتج التنفيذ. لا تعتبر Firefox removed أو مساحة C محدّثة حتى يصل الناتج.
+- إذا لم تتم الإزالة بعد: أغلق Firefox ثم Windows Settings > Apps > Apps & features > Mozilla Firefox (x64 ar) > Uninstall. لا تحدد حذف بيانات المستخدم/Profile ولا تحذف مجلد Mozilla يدوياً.
+- بعد الإزالة، اطلب ناتج فحص Registry/process/Free C من الأمر السابق؛ تحقق من Installed=False وRunning=False، ووثّق مساحة C الحالية. لا تنسب كامل تغير المساحة إلى Firefox.
+- Brave: مثبت، واجهة العربية مؤكدة عملياً، وهو المتصفح المرشح الأساسي. لم يُجرَ بعد اختبار مواقع GitHub/ChatGPT/Notion/Arena أو جرد الإضافات والحجم/الذاكرة.
+- لا تُزل Chrome أو Edge، ولا Edge WebView2 Runtime. بيانات Chrome وEdge ما زالت غير مفحوصة للحذف.
